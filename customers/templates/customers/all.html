@@ -1,0 +1,27 @@
+{% extends "customers/master.html" %}
+
+{% block title %}
+  List of all customers
+{% endblock %}
+
+{% block content %}
+<main class="container">
+  <div class="bg-body-tertiary p-5 rounded">
+    <h1>Customers</h1>  
+    {% if customers_list %}
+      <ul>
+        {% for customer in customers_list %}
+          <li>{{ customer.name }}</li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>No customers are available.</p>
+    {% endif %}
+  </div>
+</main>
+{% endblock %}
+
+
+
+  
+
