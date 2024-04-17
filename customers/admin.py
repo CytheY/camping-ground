@@ -1,6 +1,8 @@
 from django.contrib import admin
 
-from .models import Customer, PlaceId
+from .models import Customer, Parcel, Campground
 
+admin.site.register(Campground)
 admin.site.register(Customer)
-admin.site.register(PlaceId)
+admin.site.register(Parcel)
+

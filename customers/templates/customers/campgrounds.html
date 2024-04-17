@@ -1,0 +1,35 @@
+{% extends "customers/master.html" %}
+
+{% block title %}
+  List of all campgrounds
+{% endblock %}
+
+{% block content %}
+<main class="container">
+  <div class="bg-body-tertiary p-5 rounded">
+    <h1>Campgrounds</h1>  
+    {% if campgrounds_list %}
+      <ul>
+        {% for campground in campgrounds_list %}
+          <li><a href="{% url 'customers:campground_detail' campground.id %}">{{ campground.name }}</a></li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>No campgrounds are available.</p>
+    {% endif %}
+    <h1>Create a new Campground</h1>  
+    <form method = "post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Upload</button>
+    </form>
+  </div>
+  
+ 
+</main>
+{% endblock %}
+
+
+
+  
+
