@@ -1,8 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 from django.views import generic
 from .models import Customer
-from django.http import HttpResponse
-from django.template import loader
+from django.http import Http404
 
 class AllCustomersView(generic.ListView):
     template_name = "customers/all.html"
@@ -14,6 +13,9 @@ class AllCustomersView(generic.ListView):
         """
         return Customer.objects.all()
     
-
 def index(request):
     return render(request, "customers/index.html", {})
+
+def detail(request, customer_id):
+    customer = get_object_or_404(Customer, pk=customer_id)
+    return render(request, "customers/detail.html", {"customer": customer})

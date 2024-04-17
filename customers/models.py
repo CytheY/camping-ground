@@ -6,8 +6,11 @@ class PlaceId(models.Model):
         return self.place_identifier
 
 class Customer(models.Model):
-    name = models.CharField(max_length=20)
+    first_name = models.CharField(max_length=20)
     sur_name = models.CharField(max_length=20)
     place_id = models.ForeignKey(PlaceId, on_delete=models.CASCADE)
     def __str__(self):
-        return self.name + " " + self.sur_name + ";" + self.place_id.place_identifier
+        return self.first_name + " " + self.sur_name + ";" + self.place_id.place_identifier
+    
+    def getFullName(self):
+        return self.first_name + " " + self.sur_name

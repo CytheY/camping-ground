@@ -11,7 +11,7 @@
     {% if customers_list %}
       <ul>
         {% for customer in customers_list %}
-          <li>{{ customer.name }}</li>
+          <li><a href="{% url 'customers:detail' customer.id %}">{{ customer.getFullName }}</a></li>
         {% endfor %}
       </ul>
     {% else %}
